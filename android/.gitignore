@@ -1,0 +1,40 @@
+# Ignore automatically generated folders by Android Builder
+bin/
+gen/
+
+# Proguard useless output
+*/proguard/dump.txt
+*/proguard/seeds.txt
+*/proguard/usage.txt
+
+# Ignore some project dirs and files
+.settings/
+local.properties
+
+# Edit: We will try to work with project files in repo and see what happens.
+# */.classpath
+# */.project
+
+# Ignore libs source attachments
+*/libs/*.properties
+
+# Ignore OS files
+
+# Windows
+Thumbs.db
+
+# Linux
+.directory
+*~
+
+# MacOS
+.DS_Store
+
+# Crashlytics
+com_crashlytics_export_strings.xml
+
+#Android Studio support
+.gradle
+/local.properties
+/.idea/workspace.xml
+build
