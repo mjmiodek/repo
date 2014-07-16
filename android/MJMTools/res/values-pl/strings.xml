@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="appName">MJM Tools</string>
+    <string name="settingsActivityName">Ustawienia</string>
+    <string name="serviceName">MJM serwis</string>
+    <string name="unknownVersionName">nieznana</string>
+    <string name="todo">TODO: umieść tu właściwy tekst!</string>
+    <string name="unimplementedOption">Ta opcja zostanie dodana w następnej wersji aplikacji</string>
+
+    <!-- Main activity -->
+
+    <string name="mainLayoutSettingsButtonText">Ustawienia</string>
+    <string name="mainLayoutAboutText">Zestaw narzędzi rozszerzających możliwości systemu Android.\n\nWersja aplikacji: %1$s\nAutor: Michał Miodek</string>
+
+    <!-- Settings activity -->
+
+    <string name="powerOptionsCaption">Opcje związane z podłączonym zasilaniem do telefonu</string>
+    <string name="powerConnectedOptionsCaption">Po podłączeniu zasilania włącz następujące funkcje:</string>
+    <string name="powerConnectedWifiCheckboxText">WiFi</string>
+    <string name="powerConnectedMobiledataCheckboxText">Dane sieci komórkowej</string>
+    <string name="powerDisconnectedOptionsCaption">Po odłączeniu zasilania wyłącz następujące funkcje:</string>
+    <string name="powerDisconnectedWifiCheckboxText">WiFi</string>
+    <string name="powerDisconnectedMobiledataCheckboxText">Dane sieci komórkowej</string>
+    <string name="powerOffOptionsCaption">Opcje związane z pracą na baterii</string>
+    <string name="otherOptionsCaption">Inne opcje</string>
+    <string name="useLogFileCheckboxText">Zapisuj logi aplikacji do pliku</string>
+    <string name="logFileCaption">Ścieżka do pliku z logami:</string>
+    <string name="logFileEditboxHint">Ścieżka do pliku z logami</string>
+    <string name="logFileOpenButtonText">Otwórz plik z logami</string>
+    <string name="logFileSendButtonText">Wyślij plik z logami do autora</string>
+    <string name="logFileClearButtonText">Wyczyść plik z logami</string>
+
+</resources>
