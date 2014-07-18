@@ -1,7 +1,6 @@
 
 package com.example.mjmtools;
 
-import android.R;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;

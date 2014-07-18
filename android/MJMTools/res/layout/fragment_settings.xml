@@ -83,10 +83,11 @@
                 android:paddingLeft="@dimen/layout_horizontal_margin" >
 
                 <EditText
-                    android:id="@+id/powerDisconnectedPeriodicTime"
+                    android:id="@+id/powerDisconnectedPeriodicTimeEdittext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/powerDisconnectedPeriodicTimeHint"
+                    android:inputType="number"
                     android:singleLine="true"
                     android:textSize="16sp" />
 

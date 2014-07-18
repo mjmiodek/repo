@@ -22,6 +22,7 @@ public class SettingsActivity extends ActionBarActivity {
     private LinearLayout mPowerOptionsLayout;
     private CheckBox mPowerConnectedWifiCheckbox;
     private CheckBox mPowerConnectedMobiledataCheckbox;
+    private EditText mPowerDisconnectedPeriodicTimeEdittext;
     private CheckBox mPowerDisconnectedWifiCheckbox;
     private CheckBox mPowerDisconnectedMobiledataCheckbox;
 
@@ -91,6 +92,16 @@ public class SettingsActivity extends ActionBarActivity {
         if (mPowerConnectedMobiledataCheckbox == null)
             mPowerConnectedMobiledataCheckbox = (CheckBox) findViewById(R.id.powerConnectedMobiledataCheckbox);
 
+        if (mPowerDisconnectedPeriodicTimeEdittext == null)
+            mPowerDisconnectedPeriodicTimeEdittext = (EditText) findViewById(R.id.powerDisconnectedPeriodicTimeEdittext);
+        Tools.setEditTextEditionFinishedAction(mPowerDisconnectedPeriodicTimeEdittext,
+                new RunnableWithString() {
+                    @Override
+                    public void run() {
+                        onPowerDisconnectedPeriodicTimeEdittextValueChanged(mParam);
+                    }
+                });
+
         if (mPowerDisconnectedWifiCheckbox == null)
             mPowerDisconnectedWifiCheckbox = (CheckBox) findViewById(R.id.powerDisconnectedWifiCheckbox);
 
@@ -132,6 +143,8 @@ public class SettingsActivity extends ActionBarActivity {
         mPowerConnectedWifiCheckbox.setChecked(MJMToolsApplication.getPowerConnectedEnableWifi());
         mPowerConnectedMobiledataCheckbox.setChecked(MJMToolsApplication
                 .getPowerConnectedEnableMobiledata());
+        mPowerDisconnectedPeriodicTimeEdittext.setText(String.valueOf(MJMToolsApplication
+                .getPowerDisconnectedPeriodicTime()));
         mPowerDisconnectedWifiCheckbox.setChecked(MJMToolsApplication
                 .getPowerDisconnectedDisableWifi());
         mPowerDisconnectedMobiledataCheckbox.setChecked(MJMToolsApplication
@@ -200,6 +213,10 @@ public class SettingsActivity extends ActionBarActivity {
     public void onPowerConnectedMobiledataCheckboxClick(View view) {
         boolean checked = ((CheckBox) view).isChecked();
         MJMToolsApplication.setPowerConnectedEnableMobiledata(checked);
+    }
+
+    public void onPowerDisconnectedPeriodicTimeEdittextValueChanged(String periodicTime) {
+        MJMToolsApplication.setPowerDisconnectedPeriodicTime(Long.parseLong(periodicTime));
     }
 
     public void onPowerDisconnectedWifiCheckboxClick(View view) {

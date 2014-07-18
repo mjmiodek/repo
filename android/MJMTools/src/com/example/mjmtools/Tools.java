@@ -1,6 +1,13 @@
 
 package com.example.mjmtools;
 
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
 public class Tools {
     public static void setEditTextEditionFinishedAction(EditText edit,

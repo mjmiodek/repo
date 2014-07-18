@@ -19,6 +19,7 @@
         android:src="@drawable/ic_launcher" />
 
     <TextView
+        android:id="@+id/mainLayoutAppnameText"
         android:layout_width="match_parent"
         android:layout_height="@id/mainLayoutImage"
         android:layout_alignBottom="@id/mainLayoutImage"

@@ -13,7 +13,7 @@
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="19" />
+        android:targetSdkVersion="20" />
 
     <application
         android:name="com.example.mjmtools.MJMToolsApplication"
@@ -64,7 +64,7 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/mjm_widget_info" >
             </meta-data>
-        </receiver>
+        </receiver>
         -->
     </application>
 

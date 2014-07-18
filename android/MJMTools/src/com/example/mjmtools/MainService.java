@@ -1,6 +1,24 @@
 
 package com.example.mjmtools;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.app.Service;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.wifi.WifiManager;
+import android.os.BatteryManager;
+import android.os.IBinder;
+import android.os.PowerManager;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.Calendar;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class MainService extends Service {
     final long second = 1000;
