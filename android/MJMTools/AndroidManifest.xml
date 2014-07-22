@@ -12,7 +12,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="20" />
 
     <application
@@ -64,7 +64,7 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/mjm_widget_info" >
             </meta-data>
-        </receiver>
+        </receiver>
         -->
     </application>
 

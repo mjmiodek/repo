@@ -82,6 +82,13 @@
                 android:orientation="vertical"
                 android:paddingLeft="@dimen/layout_horizontal_margin" >
 
+                <TextView
+                    android:id="@+id/powerDisconnectedPeriodicTimeTextview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/powerDisconnectedPeriodicTimeCaption"
+                    android:textSize="16sp" />
+
                 <EditText
                     android:id="@+id/powerDisconnectedPeriodicTimeEdittext"
                     android:layout_width="match_parent"
@@ -146,6 +153,22 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingLeft="@dimen/layout_horizontal_margin" >
+
+                <TextView
+                    android:id="@+id/powerOffPeriodicTimeTextview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/powerOffPeriodicTimeCaption"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/powerOffPeriodicTimeEdittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/powerOffPeriodicTimeHint"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:textSize="16sp" />
 
                 <CheckBox
                     android:id="@+id/powerOffWifiCheckbox"

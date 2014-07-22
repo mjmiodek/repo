@@ -1,6 +1,7 @@
 
 package com.example.mjmtools;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -28,6 +29,7 @@ public class SettingsActivity extends ActionBarActivity {
 
     private TextView mPowerOffOptionsTextview;
     private LinearLayout mPowerOffOptionsLayout;
+    private EditText mPowerOffPeriodicTimeEdittext;
     private CheckBox mPowerOffWifiCheckbox;
     private CheckBox mPowerOffMobiledataCheckbox;
 
@@ -112,6 +114,16 @@ public class SettingsActivity extends ActionBarActivity {
             mPowerOffOptionsLayout = (LinearLayout) findViewById(R.id.powerOffOptionsLayout);
         mPowerOffOptionsLayout.setVisibility(View.GONE);
 
+        if (mPowerOffPeriodicTimeEdittext == null)
+            mPowerOffPeriodicTimeEdittext = (EditText) findViewById(R.id.powerOffPeriodicTimeEdittext);
+        Tools.setEditTextEditionFinishedAction(mPowerOffPeriodicTimeEdittext,
+                new RunnableWithString() {
+                    @Override
+                    public void run() {
+                        onPowerOffPeriodicTimeEdittextValueChanged(mParam);
+                    }
+                });
+
         if (mPowerOffWifiCheckbox == null)
             mPowerOffWifiCheckbox = (CheckBox) findViewById(R.id.powerOffWifiCheckbox);
 
@@ -149,6 +161,8 @@ public class SettingsActivity extends ActionBarActivity {
                 .getPowerDisconnectedDisableWifi());
         mPowerDisconnectedMobiledataCheckbox.setChecked(MJMToolsApplication
                 .getPowerDisconnectedDisableMobiledata());
+        mPowerOffPeriodicTimeEdittext.setText(String.valueOf(MJMToolsApplication
+                .getPowerOffPeriodicTime()));
         mPowerOffWifiCheckbox.setChecked(MJMToolsApplication.getPowerOffDisableWifi());
         mPowerOffMobiledataCheckbox.setChecked(MJMToolsApplication.getPowerOffDisableMobiledata());
         mUseLogFileCheckbox.setChecked(MJMToolsApplication.getUseLogFile());
@@ -205,8 +219,13 @@ public class SettingsActivity extends ActionBarActivity {
     }
 
     public boolean onPowerOptionsTextviewLongClick(View view) {
-        Toast.makeText(getApplicationContext(), "onPowerOptionsTextviewLongClick",
-                Toast.LENGTH_SHORT).show();
+        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+        builder.setTitle(R.string.powerOptionsCaption);
+        builder.setMessage(R.string.powerOptionsExplanation);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        //Toast.makeText(getApplicationContext(), "onPowerOptionsTextviewLongClick",
+        //Toast.LENGTH_SHORT).show();
         return true;
     }
 
@@ -238,6 +257,10 @@ public class SettingsActivity extends ActionBarActivity {
         Toast.makeText(getApplicationContext(), "onPowerOffOptionsTextviewLongClick",
                 Toast.LENGTH_SHORT).show();
         return true;
+    }
+
+    public void onPowerOffPeriodicTimeEdittextValueChanged(String periodicTime) {
+        MJMToolsApplication.setPowerOffPeriodicTime(Long.parseLong(periodicTime));
     }
 
     public void onPowerOffWifiCheckboxClick(View view) {
