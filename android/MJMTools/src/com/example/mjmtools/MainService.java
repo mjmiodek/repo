@@ -10,9 +10,12 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.wifi.WifiManager;
 import android.os.BatteryManager;
+import android.os.Environment;
 import android.os.IBinder;
 import android.os.PowerManager;
 
+import java.io.File;
+import java.io.FilenameFilter;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Calendar;
@@ -125,6 +128,8 @@ public class MainService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        checkDailyRoadsVoyagerFiles();
+        checkPhone2pcFiles();
         if (intent == null) {
             MJMLog.d(TAG, "onStartCommand(): null");
             return Service.START_STICKY;
@@ -221,5 +226,56 @@ public class MainService extends Service {
 
     private void onNoop() {
         MJMLog.d(TAG, "onNoop()");
+    }
+
+    private void checkDailyRoadsVoyagerFiles() {
+        if (!getPowerConnected()) return;
+        MJMLog.d(TAG, "checkDailyRoadsVoyagerFiles()");
+        try {
+            File sd = Environment.getExternalStorageDirectory();
+            File dr = new File(sd, "dailyroads");
+            File drv = new File(dr, "Videos");
+            File dbmobile = new File(sd, "db-mobile");
+            File phone2pc = new File(dbmobile, "phone2pc");
+            File[] files = drv.listFiles();
+            for (int i = 0; i < files.length; ++i) {
+                File srcFile = files[i];
+                if (srcFile.isFile()) {
+                    File destFile = new File(phone2pc, srcFile.getName());
+                    if (srcFile.renameTo(destFile)) {
+                        MJMLog.d(TAG,
+                                "DailyRoadsVoyager file move from " + srcFile.getAbsolutePath()
+                                        + " to " + destFile.getAbsoluteFile());
+                    }
+                }
+            }
+        } catch (NullPointerException e) {
+        }
+    }
+
+    private long phone2pcMaxPartSize() {
+        return 8000000;
+    }
+
+    private void checkPhone2pcFiles() {
+        if (!getPowerConnected()) return;
+        MJMLog.d(TAG, "checkPhone2pcFiles()");
+        try {
+            File sd = Environment.getExternalStorageDirectory();
+            File dbmobile = new File(sd, "db-mobile");
+            File phone2pc = new File(dbmobile, "phone2pc");
+            final long maxPartSize = phone2pcMaxPartSize();
+            FilenameFilter filter = new FilenameFilter() {
+                public boolean accept(File directory, String fileName) {
+                    File file = new File(directory, fileName);
+                    return file.length() > maxPartSize;
+                }
+            };
+            File[] files = phone2pc.listFiles(filter);
+            for (int i = 0; i < files.length; ++i) {
+                Tools.splitFile(files[i], maxPartSize);
+            }
+        } catch (NullPointerException e) {
+        }
     }
 }
