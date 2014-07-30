@@ -1,71 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mjmtools"
-    android:versionCode="1"
-    android:versionName="1.1.1" >
-
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
-    <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="19" />
-
-    <application
-        android:name="com.example.mjmtools.MJMToolsApplication"
-        android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/appName"
-        android:theme="@style/AppTheme" >
-        <activity
-            android:name="com.example.mjmtools.MainActivity"
-            android:label="@string/appName" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.example.mjmtools.SettingsActivity"
-            android:label="@string/settingsActivityName"
-            android:parentActivityName="com.example.mjmtools.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.mjmtools.MainActivity" />
-        </activity>
-
-        <service
-            android:name="com.example.mjmtools.MainService"
-            android:icon="@drawable/ic_launcher"
-            android:label="@string/serviceName" >
-        </service>
-
-        <receiver android:name="com.example.mjmtools.AlarmReceiver" >
-        </receiver>
-        <receiver android:name="com.example.mjmtools.PowerReceiver" >
-            <intent-filter>
-                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
-                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
-        <!--
-        <receiver android:name="com.example.mjmtools.MJMWidget" >
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/mjm_widget_info" >
-            </meta-data>
-        </receiver>
-        -->
-    </application>
-
-</manifest>
