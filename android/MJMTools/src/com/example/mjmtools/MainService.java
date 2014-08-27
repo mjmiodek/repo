@@ -132,6 +132,7 @@ public class MainService extends Service {
         checkPhone2pcFiles();
         if (intent == null) {
             MJMLog.d(TAG, "onStartCommand(): null");
+            checkPowerState();
             return Service.START_STICKY;
         }
         final String action = intent.getStringExtra(Keys.action);
@@ -166,7 +167,7 @@ public class MainService extends Service {
 
     @Override
     public void onCreate() {
-        if (getPowerConnected()) scheduleAlarm(0, Keys.actionPowerConnected);
+        checkPowerState();
     }
 
     @Override
@@ -174,6 +175,11 @@ public class MainService extends Service {
     }
 
     /// actions
+
+    private void checkPowerState() {
+        scheduleAlarm(0, getPowerConnected() ? Keys.actionPowerConnected
+                : Keys.actionPowerDisconnected);
+    }
 
     private void onPowerConnected() {
         MJMLog.d(TAG, "onPowerConnected()");
