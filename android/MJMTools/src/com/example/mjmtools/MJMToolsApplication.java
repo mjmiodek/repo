@@ -105,6 +105,20 @@ public class MJMToolsApplication extends Application {
                 + (ok ? "success" : "error"));
     }
 
+    /// option powerConnectedEnableAutosync
+
+    private static final String powerConnectedEnableAutosync = "powerConnectedEnableAutosync";
+
+    public static boolean getPowerConnectedEnableAutosync() {
+        return getSafeBoolean(powerConnectedEnableAutosync, false);
+    }
+
+    public static void setPowerConnectedEnableAutosync(boolean value) {
+        boolean ok = setSafeBoolean(powerConnectedEnableAutosync, value);
+        MJMLog.d(TAG, "setPowerConnectedEnableAutosync(" + value + "): "
+                + (ok ? "success" : "error"));
+    }
+
     /// option powerDisconnectedPeriodicTime
 
     private static final String powerDisconnectedPeriodicTime = "powerDisconnectedPeriodicTime";
@@ -144,6 +158,20 @@ public class MJMToolsApplication extends Application {
     public static void setPowerDisconnectedDisableMobiledata(boolean value) {
         boolean ok = setSafeBoolean(powerDisconnectedDisableMobiledata, value);
         MJMLog.d(TAG, "setPowerDisconnectedDisableMobiledata(" + value + "): "
+                + (ok ? "success" : "error"));
+    }
+
+    /// option powerDisconnectedEnableAutosync
+
+    private static final String powerDisconnectedDisableAutosync = "powerDisconnectedDisableAutosync";
+
+    public static boolean getPowerDisconnectedDisableAutosync() {
+        return getSafeBoolean(powerDisconnectedDisableAutosync, false);
+    }
+
+    public static void setPowerDisconnectedEnableAutosync(boolean value) {
+        boolean ok = setSafeBoolean(powerDisconnectedDisableAutosync, value);
+        MJMLog.d(TAG, "setPowerDisconnectedEnableAutosync(" + value + "): "
                 + (ok ? "success" : "error"));
     }
 

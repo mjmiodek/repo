@@ -4,6 +4,7 @@ package com.example.mjmtools;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -186,6 +187,8 @@ public class MainService extends Service {
         cancelScheduledAlarms();
         if (MJMToolsApplication.getPowerConnectedEnableWifi()) setWifiEnabled(true);
         if (MJMToolsApplication.getPowerConnectedEnableMobiledata()) setMobiledataEnabled(true);
+        if (MJMToolsApplication.getPowerConnectedEnableAutosync())
+            ContentResolver.setMasterSyncAutomatically(true);
     }
 
     private void onPowerDisconnected() {
@@ -201,6 +204,8 @@ public class MainService extends Service {
             if (MJMToolsApplication.getPowerDisconnectedDisableWifi()) setWifiEnabled(false);
             if (MJMToolsApplication.getPowerDisconnectedDisableMobiledata())
                 setMobiledataEnabled(false);
+            if (MJMToolsApplication.getPowerDisconnectedDisableAutosync())
+                ContentResolver.setMasterSyncAutomatically(false);
             startPowerOffAlarm();
         }
     }

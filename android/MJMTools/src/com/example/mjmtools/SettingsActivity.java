@@ -23,9 +23,11 @@ public class SettingsActivity extends ActionBarActivity {
     private LinearLayout mPowerOptionsLayout;
     private CheckBox mPowerConnectedWifiCheckbox;
     private CheckBox mPowerConnectedMobiledataCheckbox;
+    private CheckBox mPowerConnectedAutosyncCheckbox;
     private EditText mPowerDisconnectedPeriodicTimeEdittext;
     private CheckBox mPowerDisconnectedWifiCheckbox;
     private CheckBox mPowerDisconnectedMobiledataCheckbox;
+    private CheckBox mPowerDisconnectedAutosyncCheckbox;
 
     private TextView mPowerOffOptionsTextview;
     private LinearLayout mPowerOffOptionsLayout;
@@ -94,6 +96,9 @@ public class SettingsActivity extends ActionBarActivity {
         if (mPowerConnectedMobiledataCheckbox == null)
             mPowerConnectedMobiledataCheckbox = (CheckBox) findViewById(R.id.powerConnectedMobiledataCheckbox);
 
+        if (mPowerConnectedAutosyncCheckbox == null)
+            mPowerConnectedAutosyncCheckbox = (CheckBox) findViewById(R.id.powerConnectedAutosyncCheckbox);
+
         if (mPowerDisconnectedPeriodicTimeEdittext == null)
             mPowerDisconnectedPeriodicTimeEdittext = (EditText) findViewById(R.id.powerDisconnectedPeriodicTimeEdittext);
         Tools.setEditTextEditionFinishedAction(mPowerDisconnectedPeriodicTimeEdittext,
@@ -109,6 +114,9 @@ public class SettingsActivity extends ActionBarActivity {
 
         if (mPowerDisconnectedMobiledataCheckbox == null)
             mPowerDisconnectedMobiledataCheckbox = (CheckBox) findViewById(R.id.powerDisconnectedMobiledataCheckbox);
+
+        if (mPowerDisconnectedAutosyncCheckbox == null)
+            mPowerDisconnectedAutosyncCheckbox = (CheckBox) findViewById(R.id.powerDisconnectedAutosyncCheckbox);
 
         if (mPowerOffOptionsLayout == null)
             mPowerOffOptionsLayout = (LinearLayout) findViewById(R.id.powerOffOptionsLayout);
@@ -155,12 +163,16 @@ public class SettingsActivity extends ActionBarActivity {
         mPowerConnectedWifiCheckbox.setChecked(MJMToolsApplication.getPowerConnectedEnableWifi());
         mPowerConnectedMobiledataCheckbox.setChecked(MJMToolsApplication
                 .getPowerConnectedEnableMobiledata());
+        mPowerConnectedAutosyncCheckbox.setChecked(MJMToolsApplication
+                .getPowerConnectedEnableAutosync());
         mPowerDisconnectedPeriodicTimeEdittext.setText(String.valueOf(MJMToolsApplication
                 .getPowerDisconnectedPeriodicTime()));
         mPowerDisconnectedWifiCheckbox.setChecked(MJMToolsApplication
                 .getPowerDisconnectedDisableWifi());
         mPowerDisconnectedMobiledataCheckbox.setChecked(MJMToolsApplication
                 .getPowerDisconnectedDisableMobiledata());
+        mPowerDisconnectedAutosyncCheckbox.setChecked(MJMToolsApplication
+                .getPowerDisconnectedDisableAutosync());
         mPowerOffPeriodicTimeEdittext.setText(String.valueOf(MJMToolsApplication
                 .getPowerOffPeriodicTime()));
         mPowerOffWifiCheckbox.setChecked(MJMToolsApplication.getPowerOffDisableWifi());
@@ -234,6 +246,11 @@ public class SettingsActivity extends ActionBarActivity {
         MJMToolsApplication.setPowerConnectedEnableMobiledata(checked);
     }
 
+    public void onPowerConnectedAutosyncCheckboxClick(View view) {
+        boolean checked = ((CheckBox) view).isChecked();
+        MJMToolsApplication.setPowerConnectedEnableAutosync(checked);
+    }
+
     public void onPowerDisconnectedPeriodicTimeEdittextValueChanged(String periodicTime) {
         MJMToolsApplication.setPowerDisconnectedPeriodicTime(Long.parseLong(periodicTime));
     }
@@ -246,6 +263,11 @@ public class SettingsActivity extends ActionBarActivity {
     public void onPowerDisconnectedMobiledataCheckboxClick(View view) {
         boolean checked = ((CheckBox) view).isChecked();
         MJMToolsApplication.setPowerDisconnectedDisableMobiledata(checked);
+    }
+
+    public void onPowerDisconnectedAutosyncCheckboxClick(View view) {
+        boolean checked = ((CheckBox) view).isChecked();
+        MJMToolsApplication.setPowerDisconnectedEnableAutosync(checked);
     }
 
     public void onPowerOffOptionsTextviewClick(View view) {

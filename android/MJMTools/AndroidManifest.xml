@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
 
     <uses-sdk
         android:minSdkVersion="11"
@@ -64,7 +65,7 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/mjm_widget_info" >
             </meta-data>
-        </receiver>
+        </receiver>
         -->
     </application>
 
